@@ -1,0 +1,13 @@
+// We have something that defines a namespace
+module rur {
+
+// We want to be able to give our class a name
+interface CSCreateSensorModule {
+
+  void Input(in long input);
+
+  void Output(out long output);
+
+};
+
+};

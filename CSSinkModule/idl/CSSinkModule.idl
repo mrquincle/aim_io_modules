@@ -1,0 +1,35 @@
+/**
+ * IDL description of the CSSinkModule
+ *
+ * This file is automatically parsed by the rurbuilder backends for the omniidl 
+ * compiler. The names of the functions will become port identifiers. The names 
+ * of the function variables are not used. For now, if the function variable 
+ * ends with a number, like "void Sensor(in long input2);" there will be two
+ * portnames created.
+ *
+ * Author: 
+ * Copyright: 
+ * Date: 
+ * License: 
+ */
+
+// We have something that defines a namespace
+module rur {
+
+struct Param {
+  string module_id;
+  string oauth_token;
+  string oauth_secret;
+  long sensor_id;
+  long sample_freq;
+  long start_time; // make this working
+};
+
+// We want to be able to give our class a name
+interface CSSinkModule {
+
+  void DataIn(in long input);
+
+};
+
+};
