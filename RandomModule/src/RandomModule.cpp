@@ -1,6 +1,6 @@
 /**
- * @file RoombaModuleExt.cpp
- * @brief ...
+ * @file TestModule.cpp
+ * @brief 
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
  * Hybrid Agent Platform (CHAP). A toolbox with a lot of open-source tools, ranging from 
@@ -12,34 +12,28 @@
  * bio-industry, for animal experimentation, or anything that violates the Universal
  * Declaration of Human Rights.
  *
- * Copyright © 2012 Anne van Rossum <anne@almende.com>
+ * Copyright © 2011 scott guo <scott@almende.com>
  *
- * @author  ...
- * @date    ...
+ * @author  Scott Guo
+ * @date    Nov 21, 2011
+ * @project 
  * @company Almende B.V.
  * @case    Artificial Intelligence Framework
  */
 
-#include <RoombaModuleExt.h>
-
+#include <RandomModule.h>
+#include <stdlib.h>
 #include <iostream>
-
-#include "madp/support/ProblemDecTiger.h"
-#include "madp/planning/JESPExhaustivePlanner.h"
 
 using namespace rur;
 using namespace std;
 
-void RoombaModuleExt::Tick() {
-	ProblemDecTiger dectiger;
-	JESPExhaustivePlanner jesp(3,&dectiger);
-	jesp.Plan();
-	cout << jesp.GetExpectedReward() << endl;
-	cout << jesp.GetJointPolicy()->SoftPrint() << endl;
-	sleep(10);
-}
 
-void RoombaModuleExt::setBeta(float beta) {
+
+void RandomModule::Tick() {
+	int current_value = rand()%10+1;
+		
+	//cout << "Write value: " << current_value << endl;
+	writeRes(current_value);
 
 }
-

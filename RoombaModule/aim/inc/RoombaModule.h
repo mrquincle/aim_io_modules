@@ -41,9 +41,7 @@ public:
     cliParam = new Param();
   }
   
-  ~RoombaModule() { 
-    delete cliParam;
-  }
+  ~RoombaModule() { }
   
   void Tick();
   

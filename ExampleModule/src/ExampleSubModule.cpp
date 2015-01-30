@@ -1,5 +1,5 @@
 /**
- * @file RoombaModuleExt.cpp
+ * @file ExampleModule.cpp
  * @brief ...
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
@@ -20,26 +20,31 @@
  * @case    Artificial Intelligence Framework
  */
 
-#include <RoombaModuleExt.h>
+#include <ExampleSubModule.h>
 
 #include <iostream>
-
-#include "madp/support/ProblemDecTiger.h"
-#include "madp/planning/JESPExhaustivePlanner.h"
 
 using namespace rur;
 using namespace std;
 
-void RoombaModuleExt::Tick() {
-	ProblemDecTiger dectiger;
-	JESPExhaustivePlanner jesp(3,&dectiger);
-	jesp.Plan();
-	cout << jesp.GetExpectedReward() << endl;
-	cout << jesp.GetJointPolicy()->SoftPrint() << endl;
-	sleep(10);
-}
-
-void RoombaModuleExt::setBeta(float beta) {
+ExampleSubModule::ExampleSubModule() {
 
 }
 
+void ExampleSubModule::Init(std::string module_id) {
+  file.open(GetParam()->filename.c_str(), ios::app);
+}
+
+void ExampleSubModule::Tick() {
+  cout << "Read sensor (will be blocking)" << endl;
+  std::vector<int> data = *readSensor();
+  std::vector<int>::iterator i;
+  cout << "Write to file: ";
+  for (i = data.begin(); i != data.end(); ++i) {
+    file << (*i) << " ";
+    cout << (*i) << " ";
+  }
+  cout << endl;
+  file << endl;
+  //myfile.close();
+}

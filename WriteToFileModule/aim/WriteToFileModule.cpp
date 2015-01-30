@@ -1,6 +1,6 @@
 /**
- * @file RoombaModuleExt.cpp
- * @brief ...
+ * @file WriteToFileModule.cpp
+ * @brief 
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
  * Hybrid Agent Platform (CHAP). A toolbox with a lot of open-source tools, ranging from 
@@ -12,34 +12,29 @@
  * bio-industry, for animal experimentation, or anything that violates the Universal
  * Declaration of Human Rights.
  *
- * Copyright © 2012 Anne van Rossum <anne@almende.com>
+ * Copyright © 2011 scott guo <scott@almende.org>
  *
- * @author  ...
- * @date    ...
+ * @author  Scott Guo
+ * @date    Jan 4, 2012
+ * @project 
  * @company Almende B.V.
  * @case    Artificial Intelligence Framework
  */
 
-#include <RoombaModuleExt.h>
-
+#include <WriteToFileModule.h>
+#include <stdlib.h>
 #include <iostream>
-
-#include "madp/support/ProblemDecTiger.h"
-#include "madp/planning/JESPExhaustivePlanner.h"
+#include <fstream>
 
 using namespace rur;
 using namespace std;
 
-void RoombaModuleExt::Tick() {
-	ProblemDecTiger dectiger;
-	JESPExhaustivePlanner jesp(3,&dectiger);
-	jesp.Plan();
-	cout << jesp.GetExpectedReward() << endl;
-	cout << jesp.GetJointPolicy()->SoftPrint() << endl;
-	sleep(10);
+void WriteToFileModule::Tick() {
+	double input1 = *readInp1();
+	
+	double input2 = *readInp2();
+	
+	ofstream myfile(cliParam->filename.c_str(), ios::app);
+	myfile << input1 << '\t' << input2 << '\n';
+	myfile.close();
 }
-
-void RoombaModuleExt::setBeta(float beta) {
-
-}
-

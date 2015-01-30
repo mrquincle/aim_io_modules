@@ -1,0 +1,31 @@
+/**
+ * IDL description of the RandomModule
+ *
+ * This file is automatically parsed by the rurbuilder backends for the omniidl 
+ * compiler. The names of the functions will become port identifiers. The names 
+ * of the function variables are not used. For now, if the function variable 
+ * ends with a number, like "void Sensor(in long input2);" there will be two
+ * portnames created.
+ *
+ * Author: 
+ * Copyright: 
+ * Date: 
+ * License: 
+ */
+
+// We have something that defines a namespace
+module rur {
+
+// parameters on the command-line
+struct Param {
+  long sensor_id;
+};
+
+// We want to be able to give our class a name
+interface RandomModule {
+
+  void Res(out long output);
+
+};
+
+};

@@ -1,5 +1,5 @@
 /**
- * @file RoombaModuleExt.cpp
+ * @file EmailModuleMain.cpp
  * @brief ...
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
@@ -12,34 +12,34 @@
  * bio-industry, for animal experimentation, or anything that violates the Universal
  * Declaration of Human Rights.
  *
- * Copyright © 2012 Anne van Rossum <anne@almende.com>
+ * Copyright © 2011 Anne van Rossum <anne@almende.com>
  *
  * @author  ...
  * @date    ...
  * @company Almende B.V.
  * @case    Artificial Intelligence Framework
  */
+#include <EmailModule.h>
 
-#include <RoombaModuleExt.h>
-
+#include <stdlib.h>
 #include <iostream>
-
-#include "madp/support/ProblemDecTiger.h"
-#include "madp/planning/JESPExhaustivePlanner.h"
 
 using namespace rur;
 using namespace std;
 
-void RoombaModuleExt::Tick() {
-	ProblemDecTiger dectiger;
-	JESPExhaustivePlanner jesp(3,&dectiger);
-	jesp.Plan();
-	cout << jesp.GetExpectedReward() << endl;
-	cout << jesp.GetJointPolicy()->SoftPrint() << endl;
-	sleep(10);
+/**
+ * Every module is a separate binary and hence has its own main method.
+ */
+int main(int argc, char *argv[])  {
+	EmailModule *m = new EmailModule();
+
+	m->Init();
+
+	do {
+		m->Tick();
+	} while (true); // (!m->Finished());
+
+	delete m;
+
+	return EXIT_SUCCESS;
 }
-
-void RoombaModuleExt::setBeta(float beta) {
-
-}
-

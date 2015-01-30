@@ -1,5 +1,5 @@
 /**
- * @file RoombaModuleMain.cpp
+ * @file ExampleModuleMain.cpp
  * @brief ...
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
@@ -19,7 +19,7 @@
  * @company Almende B.V. (or your university, institute or company)
  * @case    Artificial Intelligence Module
  */
-#include <RoombaModuleExt.h>
+#include <ExampleSubModule.h>
 
 #include <stdlib.h>
 #include <iostream>
@@ -30,24 +30,27 @@ using namespace std;
 /**
  * Every module is a separate binary and hence has its own main method. It is recommended
  * to have a version of your code running without any middleware wrappers, so preferably
- * have this file and the RoombaModule header and code in a separate "aim" directory.
+ * have this file and the ExampleModule header and code in a separate "aim" directory.
  */
 int main(int argc, char *argv[])  {
-	RoombaModuleExt *m = new RoombaModuleExt();
+	ExampleSubModule *m = new ExampleSubModule();
+	Param * param = m->GetParam();
 
+	cout << "Make sure you start the yarp server before if build with YARP" << endl;
+	cout << "Then run this binary" << endl;
+	cout << "And connect using \"yarp connect \\examplesubmodule{id}\\sensor\"" << endl;
 	if (argc < 3) {
-		std::cout << "Use an identifier as argument for this instance" << endl;
-		delete m;
+		std::cout << "Usage: [identifier] [filename]" << endl;
 		return EXIT_FAILURE;
 	}
 	std::string identifier = argv[1];
 	m->Init(identifier);
 
-	m->setAlpha(argv[2]);
+	param->filename = argv[2];
 
-//	do {
+	do {
 		m->Tick();
-	//} while (true); 
+	} while (true); 
 
 	delete m;
 

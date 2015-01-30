@@ -1,5 +1,5 @@
 /**
- * @file RoombaModuleExt.cpp
+ * @file ExampleModule.cpp
  * @brief ...
  *
  * This file is created at Almende B.V. It is open-source software and part of the Common 
@@ -20,26 +20,10 @@
  * @case    Artificial Intelligence Framework
  */
 
-#include <RoombaModuleExt.h>
-
-#include <iostream>
-
-#include "madp/support/ProblemDecTiger.h"
-#include "madp/planning/JESPExhaustivePlanner.h"
+#include <ExampleModule.h>
 
 using namespace rur;
-using namespace std;
 
-void RoombaModuleExt::Tick() {
-	ProblemDecTiger dectiger;
-	JESPExhaustivePlanner jesp(3,&dectiger);
-	jesp.Plan();
-	cout << jesp.GetExpectedReward() << endl;
-	cout << jesp.GetJointPolicy()->SoftPrint() << endl;
-	sleep(10);
-}
-
-void RoombaModuleExt::setBeta(float beta) {
+void ExampleModule::Tick() {
 
 }
-
